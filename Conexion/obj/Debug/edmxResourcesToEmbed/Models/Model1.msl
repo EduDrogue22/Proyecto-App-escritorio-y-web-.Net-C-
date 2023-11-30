@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SERVICIO_LIMPIEZAModelStoreContainer" CdmEntityContainer="SERVICIO_LIMPIEZAEntities">
+    <EntitySetMapping Name="Calificacion_de_servicio">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Calificacion_de_servicio">
+        <MappingFragment StoreEntitySet="Calificacion_de_servicio">
+          <ScalarProperty Name="ID_calificacion" ColumnName="ID_calificacion" />
+          <ScalarProperty Name="nivel_de_calificacion" ColumnName="nivel_de_calificacion" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+          <ScalarProperty Name="dni_cliente" ColumnName="dni_cliente" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compra">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Compra">
+        <MappingFragment StoreEntitySet="Compra">
+          <ScalarProperty Name="ID_compra" ColumnName="ID_compra" />
+          <ScalarProperty Name="fecha_de_compra" ColumnName="fecha_de_compra" />
+          <ScalarProperty Name="ID_proveedor" ColumnName="ID_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="ID_direccion" ColumnName="ID_direccion" />
+          <ScalarProperty Name="direccion1" ColumnName="direccion" />
+          <ScalarProperty Name="referencias" ColumnName="referencias" />
+          <ScalarProperty Name="ID_distrito" ColumnName="ID_distrito" />
+          <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distrito">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Distrito">
+        <MappingFragment StoreEntitySet="Distrito">
+          <ScalarProperty Name="ID_distrito" ColumnName="ID_distrito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="presentacion" ColumnName="presentacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto_por_compra">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Producto_por_compra">
+        <MappingFragment StoreEntitySet="Producto_por_compra">
+          <ScalarProperty Name="ID_producto_por_compra" ColumnName="ID_producto_por_compra" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+          <ScalarProperty Name="ID_compra" ColumnName="ID_compra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto_por_servicio">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Producto_por_servicio">
+        <MappingFragment StoreEntitySet="Producto_por_servicio">
+          <ScalarProperty Name="ID_producto_por_servicio" ColumnName="ID_producto_por_servicio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+          <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedor">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Proveedor">
+        <MappingFragment StoreEntitySet="Proveedor">
+          <ScalarProperty Name="ID_proveedor" ColumnName="ID_proveedor" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedor_por_producto">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Proveedor_por_producto">
+        <MappingFragment StoreEntitySet="Proveedor_por_producto">
+          <ScalarProperty Name="ID_proveedor_por_producto" ColumnName="ID_proveedor_por_producto" />
+          <ScalarProperty Name="ID_proveedor" ColumnName="ID_proveedor" />
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="ID_servicio" ColumnName="ID_servicio" />
+          <ScalarProperty Name="fecha_del_servicio" ColumnName="fecha_del_servicio" />
+          <ScalarProperty Name="numero_de_horas" ColumnName="numero_de_horas" />
+          <ScalarProperty Name="hora_de_inicio" ColumnName="hora_de_inicio" />
+          <ScalarProperty Name="hora_de_fin" ColumnName="hora_de_fin" />
+          <ScalarProperty Name="comision_empresa" ColumnName="comision_empresa" />
+          <ScalarProperty Name="pago_a_trabajador" ColumnName="pago_a_trabajador" />
+          <ScalarProperty Name="precio_de_servicio" ColumnName="precio_de_servicio" />
+          <ScalarProperty Name="ID_solicitud" ColumnName="ID_solicitud" />
+          <ScalarProperty Name="ID_direccion" ColumnName="ID_direccion" />
+          <ScalarProperty Name="ID_trabajador" ColumnName="ID_trabajador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicitud">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Solicitud">
+        <MappingFragment StoreEntitySet="Solicitud">
+          <ScalarProperty Name="ID_solicitud" ColumnName="ID_solicitud" />
+          <ScalarProperty Name="fecha_y_hora_de_solicitud" ColumnName="fecha_y_hora_de_solicitud" />
+          <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trabajador">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.Trabajador">
+        <MappingFragment StoreEntitySet="Trabajador">
+          <ScalarProperty Name="ID_trabajador" ColumnName="ID_trabajador" />
+          <ScalarProperty Name="dni_trabajador" ColumnName="dni_trabajador" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="contacto_de_emergencia" ColumnName="contacto_de_emergencia" />
+          <ScalarProperty Name="disponible" ColumnName="disponible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="SERVICIO_LIMPIEZAModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+          <ScalarProperty Name="NOMBRE_USER" ColumnName="NOMBRE_USER" />
+          <ScalarProperty Name="PASS" ColumnName="PASS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Producto";
+}
+
+
+<header class="py-5 bg-image-full" style="background-image: url('../../Media/servicio-limpieza.jpg')">
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="~/Media/casa.png" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder ">Productos</h1>
+    </div>
+</header>
+
+<body>
+    <link href="~/css/Estilos.css" rel="stylesheet" />
+    <section class="mt-3 mb-3">
+        <div class="container">
+            @for (var i = 0; i < ViewBag.Productos.Count && i < 6; i += 3)
+            {
+                <div class="row col mt-3 ,mb-3">
+                    @for (var j = i; j < i + 3 && j < ViewBag.Productos.Count; j++)
+                    {
+                        var prod = ViewBag.Productos[j];
+                        <div class="col mt-3 ,mb-3">
+                            <div class="card"  style="width: 18rem;">
+                                <img src="~/Media/mister-musuculo.png" class="card-img-top bg-white" alt="...">
+                                <div class="card-body border-top border-black">
+                                    
+                                    <h6 class="card-title">@prod.nombre</h6>
+                                    <p class="card-text">@prod.presentacion</p>
+                                    <a href="#" class="btn btn-primary">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</body>
+
+
+

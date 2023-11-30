@@ -1,0 +1,12 @@
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\Conexion.dll.config
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\Conexion.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\Conexion.pdb
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\EntityFramework.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\EntityFramework.xml
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\obj\Debug\Conexion.csproj.AssemblyReference.cache
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\obj\Debug\Conexion.csproj.CopyComplete
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\obj\Debug\Conexion.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Conexion\obj\Debug\Conexion.pdb

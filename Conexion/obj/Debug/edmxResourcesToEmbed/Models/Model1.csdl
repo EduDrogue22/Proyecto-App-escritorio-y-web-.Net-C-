@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SERVICIO_LIMPIEZAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Calificacion_de_servicio">
+    <Key>
+      <PropertyRef Name="ID_calificacion" />
+    </Key>
+    <Property Name="ID_calificacion" Type="Int32" Nullable="false" />
+    <Property Name="nivel_de_calificacion" Type="Byte" Nullable="false" />
+    <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ID_servicio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Calificacion_Servicio" FromRole="Calificacion_de_servicio" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ID_cliente" />
+    </Key>
+    <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+    <Property Name="dni_cliente" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="primer_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="primer_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="celular" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Cliente" FromRole="Cliente" ToRole="Direccion" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_Cliente" FromRole="Cliente" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="ID_compra" />
+    </Key>
+    <Property Name="ID_compra" Type="Int32" Nullable="false" />
+    <Property Name="fecha_de_compra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_proveedor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Producto_por_compra" Relationship="Self.FK_Producto_por_compra_Compra" FromRole="Compra" ToRole="Producto_por_compra" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="ID_direccion" />
+    </Key>
+    <Property Name="ID_direccion" Type="Int32" Nullable="false" />
+    <Property Name="direccion1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="referencias" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_distrito" Type="Int32" Nullable="false" />
+    <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Direccion_Cliente" FromRole="Direccion" ToRole="Cliente" />
+    <NavigationProperty Name="Distrito" Relationship="Self.FK_Direccion_Distrito" FromRole="Direccion" ToRole="Distrito" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Direccion" FromRole="Direccion" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="Distrito">
+    <Key>
+      <PropertyRef Name="ID_distrito" />
+    </Key>
+    <Property Name="ID_distrito" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="disponible" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Distrito" FromRole="Distrito" ToRole="Direccion" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="ID_producto" />
+    </Key>
+    <Property Name="ID_producto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="presentacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Producto_por_compra" Relationship="Self.FK_Producto_por_compra_Producto" FromRole="Producto" ToRole="Producto_por_compra" />
+    <NavigationProperty Name="Producto_por_servicio" Relationship="Self.FK_Producto_por_servicio_Producto" FromRole="Producto" ToRole="Producto_por_servicio" />
+    <NavigationProperty Name="Proveedor_por_producto" Relationship="Self.FK_Proveedor_por_producto_Producto" FromRole="Producto" ToRole="Proveedor_por_producto" />
+  </EntityType>
+  <EntityType Name="Producto_por_compra">
+    <Key>
+      <PropertyRef Name="ID_producto_por_compra" />
+    </Key>
+    <Property Name="ID_producto_por_compra" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="ID_producto" Type="Int32" Nullable="false" />
+    <Property Name="ID_compra" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Compra" Relationship="Self.FK_Producto_por_compra_Compra" FromRole="Producto_por_compra" ToRole="Compra" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_por_compra_Producto" FromRole="Producto_por_compra" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Producto_por_servicio">
+    <Key>
+      <PropertyRef Name="ID_producto_por_servicio" />
+    </Key>
+    <Property Name="ID_producto_por_servicio" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="ID_producto" Type="Int32" Nullable="false" />
+    <Property Name="ID_servicio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_por_servicio_Producto" FromRole="Producto_por_servicio" ToRole="Producto" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Producto_por_servicio_Servicio" FromRole="Producto_por_servicio" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="ID_proveedor" />
+    </Key>
+    <Property Name="ID_proveedor" Type="Int32" Nullable="false" />
+    <Property Name="RUC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="razon_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="celular" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Proveedor_por_producto" Relationship="Self.FK_Proveedor_por_producto_Proveedor" FromRole="Proveedor" ToRole="Proveedor_por_producto" />
+  </EntityType>
+  <EntityType Name="Proveedor_por_producto">
+    <Key>
+      <PropertyRef Name="ID_proveedor_por_producto" />
+    </Key>
+    <Property Name="ID_proveedor_por_producto" Type="Int32" Nullable="false" />
+    <Property Name="ID_proveedor" Type="Int32" Nullable="false" />
+    <Property Name="ID_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Proveedor_por_producto_Producto" FromRole="Proveedor_por_producto" ToRole="Producto" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FK_Proveedor_por_producto_Proveedor" FromRole="Proveedor_por_producto" ToRole="Proveedor" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="ID_servicio" />
+    </Key>
+    <Property Name="ID_servicio" Type="Int32" Nullable="false" />
+    <Property Name="fecha_del_servicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="numero_de_horas" Type="Int32" Nullable="false" />
+    <Property Name="hora_de_inicio" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="hora_de_fin" Type="Time" annotation:StoreGeneratedPattern="Computed" Precision="7" />
+    <Property Name="comision_empresa" Type="Double" Nullable="false" />
+    <Property Name="pago_a_trabajador" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="precio_de_servicio" Type="Double" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ID_solicitud" Type="Int32" Nullable="false" />
+    <Property Name="ID_direccion" Type="Int32" Nullable="false" />
+    <Property Name="ID_trabajador" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Calificacion_de_servicio" Relationship="Self.FK_Calificacion_Servicio" FromRole="Servicio" ToRole="Calificacion_de_servicio" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK_Servicio_Direccion" FromRole="Servicio" ToRole="Direccion" />
+    <NavigationProperty Name="Producto_por_servicio" Relationship="Self.FK_Producto_por_servicio_Servicio" FromRole="Servicio" ToRole="Producto_por_servicio" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Servicio_Solicitud" FromRole="Servicio" ToRole="Solicitud" />
+    <NavigationProperty Name="Trabajador" Relationship="Self.FK_Servicio_Trabajador" FromRole="Servicio" ToRole="Trabajador" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="ID_solicitud" />
+    </Key>
+    <Property Name="ID_solicitud" Type="Int32" Nullable="false" />
+    <Property Name="fecha_y_hora_de_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Solicitud_Cliente" FromRole="Solicitud" ToRole="Cliente" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Solicitud" FromRole="Solicitud" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="Trabajador">
+    <Key>
+      <PropertyRef Name="ID_trabajador" />
+    </Key>
+    <Property Name="ID_trabajador" Type="Int32" Nullable="false" />
+    <Property Name="dni_trabajador" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="primer_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="primer_apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="celular" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="contacto_de_emergencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="disponible" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Trabajador" FromRole="Trabajador" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_USER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PASS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Calificacion_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Calificacion_de_servicio" Type="Self.Calificacion_de_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ID_servicio" />
+      </Principal>
+      <Dependent Role="Calificacion_de_servicio">
+        <PropertyRef Name="ID_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID_cliente" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="ID_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID_cliente" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="ID_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_por_compra_Compra">
+    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+    <End Role="Producto_por_compra" Type="Self.Producto_por_compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="ID_compra" />
+      </Principal>
+      <Dependent Role="Producto_por_compra">
+        <PropertyRef Name="ID_compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Distrito">
+    <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distrito">
+        <PropertyRef Name="ID_distrito" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="ID_distrito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicio_Direccion">
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion">
+        <PropertyRef Name="ID_direccion" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="ID_direccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_por_compra_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Producto_por_compra" Type="Self.Producto_por_compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ID_producto" />
+      </Principal>
+      <Dependent Role="Producto_por_compra">
+        <PropertyRef Name="ID_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_por_servicio_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Producto_por_servicio" Type="Self.Producto_por_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ID_producto" />
+      </Principal>
+      <Dependent Role="Producto_por_servicio">
+        <PropertyRef Name="ID_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proveedor_por_producto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Proveedor_por_producto" Type="Self.Proveedor_por_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ID_producto" />
+      </Principal>
+      <Dependent Role="Proveedor_por_producto">
+        <PropertyRef Name="ID_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_por_servicio_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Producto_por_servicio" Type="Self.Producto_por_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="ID_servicio" />
+      </Principal>
+      <Dependent Role="Producto_por_servicio">
+        <PropertyRef Name="ID_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proveedor_por_producto_Proveedor">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+    <End Role="Proveedor_por_producto" Type="Self.Proveedor_por_producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="ID_proveedor" />
+      </Principal>
+      <Dependent Role="Proveedor_por_producto">
+        <PropertyRef Name="ID_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicio_Solicitud">
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud">
+        <PropertyRef Name="ID_solicitud" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="ID_solicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servicio_Trabajador">
+    <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajador">
+        <PropertyRef Name="ID_trabajador" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="ID_trabajador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SERVICIO_LIMPIEZAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Calificacion_de_servicio" EntityType="Self.Calificacion_de_servicio" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Compra" EntityType="Self.Compra" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+    <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Producto_por_compra" EntityType="Self.Producto_por_compra" />
+    <EntitySet Name="Producto_por_servicio" EntityType="Self.Producto_por_servicio" />
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+    <EntitySet Name="Proveedor_por_producto" EntityType="Self.Proveedor_por_producto" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+    <EntitySet Name="Solicitud" EntityType="Self.Solicitud" />
+    <EntitySet Name="Trabajador" EntityType="Self.Trabajador" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_Calificacion_Servicio" Association="Self.FK_Calificacion_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Calificacion_de_servicio" EntitySet="Calificacion_de_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Cliente" Association="Self.FK_Direccion_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Cliente" Association="Self.FK_Solicitud_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_por_compra_Compra" Association="Self.FK_Producto_por_compra_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="Producto_por_compra" EntitySet="Producto_por_compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Distrito" Association="Self.FK_Direccion_Distrito">
+      <End Role="Distrito" EntitySet="Distrito" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicio_Direccion" Association="Self.FK_Servicio_Direccion">
+      <End Role="Direccion" EntitySet="Direccion" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_por_compra_Producto" Association="Self.FK_Producto_por_compra_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Producto_por_compra" EntitySet="Producto_por_compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_por_servicio_Producto" Association="Self.FK_Producto_por_servicio_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Producto_por_servicio" EntitySet="Producto_por_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proveedor_por_producto_Producto" Association="Self.FK_Proveedor_por_producto_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Proveedor_por_producto" EntitySet="Proveedor_por_producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_por_servicio_Servicio" Association="Self.FK_Producto_por_servicio_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Producto_por_servicio" EntitySet="Producto_por_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proveedor_por_producto_Proveedor" Association="Self.FK_Proveedor_por_producto_Proveedor">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="Proveedor_por_producto" EntitySet="Proveedor_por_producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicio_Solicitud" Association="Self.FK_Servicio_Solicitud">
+      <End Role="Solicitud" EntitySet="Solicitud" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servicio_Trabajador" Association="Self.FK_Servicio_Trabajador">
+      <End Role="Trabajador" EntitySet="Trabajador" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

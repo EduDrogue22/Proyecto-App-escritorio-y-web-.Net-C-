@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Contacto";
+}
+
+<header class="py-5 bg-image-full" style="background-image: url('../../Media/servicio-limpieza.jpg')">
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="~/Media/casa.png" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder">Contacto</h1>
+    </div>
+</header>
+
+<div class="container mt-3 mb-3">
+
+    <form method="POST" action="Contacto">
+
+        <div class="mb-3">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" placeholder="Ingrese su email" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="mensaje">Mensaje:</label>
+            <textarea class="form-control" name="mensaje" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+
+        <div class="mt-3 mb-3">
+            <p>Nombre: @ViewBag.nombre </p>
+
+            <p>Email: @ViewBag.email </p>
+
+            <p>Mensaje: @ViewBag.mensaje </p>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,12 @@
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\Criptografia.dll.config
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\Criptografia.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\Criptografia.pdb
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\EntityFramework.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\EntityFramework.xml
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\obj\Debug\Criptografia.csproj.AssemblyReference.cache
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\obj\Debug\Criptografia.csproj.CoreCompileInputs.cache
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\obj\Debug\Criptografia.csproj.CopyComplete
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\obj\Debug\Criptografia.dll
+C:\Users\felip\Downloads\appEscritorioLimpieza\Criptografia\obj\Debug\Criptografia.pdb

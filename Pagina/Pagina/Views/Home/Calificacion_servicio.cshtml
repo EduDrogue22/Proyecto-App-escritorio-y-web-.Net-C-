@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Calificacion_servicio";
+}
+
+<header class="py-5 bg-image-full" style="background-image: url('../../Media/servicio-limpieza.jpg')">
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="~/Media/casa.png" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder ">Calificacion Servicios</h1>
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <table class="table mx-auto d-table table-bordered border-dark mt-3">
+            <thead class="table-primary border-primary">
+                <tr>
+                    <th class="col-auto">Id Clasificacion</th>
+                    <th class="col-auto">Nivel Clasificacion</th>
+                    <th class="col-auto">Comentario</th>
+                    <th class="col-auto">Servicio</th>
+                </tr>
+            </thead>
+
+            @foreach (var cal_serv in ViewBag.Calificacion_de_servicio)
+            {
+                <tbody>
+                    <tr>
+                        <td class="col-1">@cal_serv.ID_calificacion</td>
+                        <td class="col-1">@cal_serv.nivel_de_calificacion</td>                       
+                        <td class="col-3">
+                            @if (cal_serv.comentario == null)
+                            {
+                                @:Sin Comentario
+                            }
+                            else
+                            {
+                                @cal_serv.comentario
+                            }
+
+                        </td>
+                        <td class="col-1">@cal_serv.ID_servicio</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</body>
+
